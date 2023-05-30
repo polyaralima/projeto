@@ -6,21 +6,25 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 @Entity
-@Table(name = "tb_serie")
-public class Serie {
+@Table(name = "tb_assinatura")
+public class Assinatura {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotBlank(message = "É necessário informar o nome da série")
+    @NotBlank(message = "É necessário informar o nome da assinatura")
     private String nome;
-    @NotNull(message = "O campo sinpose é obrigatório")
-    @Column(name = "ds_sinopse",length = 500)
-    private @NotBlank String sinopse;
+    @NotNull(message = "Campo valor obrigatório")
+    private Double valor;
+    @Column(name = "ds_plano",length = 500)
+    private @NotBlank String descrição;
     @ManyToOne
-    @JoinColumn(name = "genero_id")
-    private Genero genero;
-}
+    @JoinColumn(name = "plano_id")
+    private Assinatura assinatura;
 
+
+}

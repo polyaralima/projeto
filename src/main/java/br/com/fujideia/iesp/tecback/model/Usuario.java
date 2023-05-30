@@ -6,23 +6,24 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.Serializable;
+import java.util.List;
 
+@Entity
 @Getter
 @Setter
-@Entity
-@Table(name = "tb_filme")
-public class Filme implements Serializable {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotBlank(message = "É necessário informar o título da fime")
-    private String titulo;
-    @NotNull(message = "O campo sinpose é obrigatório")
-    @Column(name = "ds_sinopse",length = 500)
-    private @NotBlank String sinopse;
+    @NotBlank(message = "É necessário informar o nome do usuário")
+    private String nome;
+    @NotBlank (message = "É neecessário informar o email do usuario")
+    private String email;
+    private @NotBlank String usuario;
     @ManyToOne
     @JoinColumn(name = "genero_id")
     private Genero genero;
+
+
 }
